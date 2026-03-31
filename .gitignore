@@ -1,0 +1,38 @@
+﻿# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+**/bin/
+**/obj/
+**/out/
+**/TestResults/
+
+# Logs
+*.log
+logs/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Rider / ReSharper
+*.sln.iml
+_ReSharper*/
+*.DotSettings.user
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+TheHotelApp/appsettings.Development.json
+TheHotelApp/secrets.json
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
