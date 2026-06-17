@@ -20,3 +20,4 @@ namespace TheHotelApp.Models.AccountViewModels
         public bool RememberMe { get; set; }
     }
 }
+        
