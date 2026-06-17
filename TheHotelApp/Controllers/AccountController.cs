@@ -25,6 +25,8 @@ namespace TheHotelApp.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
 
+        private const string ReturnUrlKey = "ReturnUrl";
+
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
@@ -47,7 +49,7 @@ namespace TheHotelApp.Controllers
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[ReturnUrlKey] = returnUrl;
             return View();
         }
 
@@ -56,7 +58,7 @@ namespace TheHotelApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[ReturnUrlKey] = returnUrl;
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
@@ -100,7 +102,7 @@ namespace TheHotelApp.Controllers
             }
 
             var model = new LoginWith2faViewModel { RememberMe = rememberMe };
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[ReturnUrlKey] = returnUrl;
 
             return View(model);
         }
@@ -154,7 +156,7 @@ namespace TheHotelApp.Controllers
                 throw new ApplicationException($"Unable to load two-factor authentication user.");
             }
 
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[ReturnUrlKey] = returnUrl;
 
             return View();
         }
@@ -208,7 +210,7 @@ namespace TheHotelApp.Controllers
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[ReturnUrlKey] = returnUrl;
             return View();
         }
 
@@ -217,7 +219,7 @@ namespace TheHotelApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[ReturnUrlKey] = returnUrl;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -290,7 +292,7 @@ namespace TheHotelApp.Controllers
             else
             {
                 // If the user does not have an account, then ask the user to create an account.
-                ViewData["ReturnUrl"] = returnUrl;
+                ViewData[ReturnUrlKey] = returnUrl;
                 ViewData["LoginProvider"] = info.LoginProvider;
                 var email = info.Principal.FindFirstValue(ClaimTypes.Email);
                 return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
@@ -325,7 +327,7 @@ namespace TheHotelApp.Controllers
                 AddErrors(result);
             }
 
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[ReturnUrlKey] = returnUrl;
             return View(nameof(ExternalLogin), model);
         }
 
