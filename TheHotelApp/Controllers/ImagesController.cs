@@ -69,6 +69,11 @@ namespace TheHotelApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(List<IFormFile> files)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             var result = await _hotelService.AddImagesAsync(files);
             var AddedImages = new List<string>();
             foreach(var image in result.AddedImages)
