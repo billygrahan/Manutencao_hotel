@@ -121,11 +121,11 @@
                             <div id="images">
                                 @if (ViewBag.Images != null)
                         {
-                            foreach (var roomPhoto in ViewBag.Images as IEnumerable<Image>)
+                            foreach (var galleryItem in ViewBag.Images as IEnumerable<Image>)
                             {
                                 <div class="col-md-4">
-                                    <input name="imageIDs" value="@roomPhoto.ID" type="hidden">
-                                    <img class="img-responsive" src="@roomPhoto.ImageUrl" asp-append-version="true" alt="@roomPhoto.Name" width="400">
+                                    <input name="imageIDs" value="@galleryItem.ID" type="hidden">
+                                    <img class="img-responsive" src="@galleryItem.ImageUrl" asp-append-version="true" alt="@galleryItem.Name" width="400">
                                     <p class="text-center remove"><a>Remove</a></p>
                                 </div>
                     }

@@ -191,7 +191,6 @@ Sidebar Open Button - Show or Hide Sidebar
 ================================================================================= */
 .sidebar-open-button{
 	height: 60px;
-	display: block;
 	font-size: 22px;
 	display: block;
 	width: 62px;
@@ -389,7 +388,6 @@ Sidebar
     left: 0;
     font-family: @titlefont;
     background: @color0;
-    z-index: 0;
     font-size: 13px;
     font-weight: normal;
     z-index: 500;
@@ -397,7 +395,6 @@ Sidebar
 
     .label{
     	font-size: 10px;
-    	position: relative;
     	line-height: 12px;
     	padding: 2px 5px;
     	position: absolute;
@@ -559,7 +556,6 @@ Sidepanel
 .sidepanel {
 	z-index: 9999;
     position:fixed;
-    right: 0;
     display: none;
     width: 300px;
     top: 60px;
@@ -589,7 +585,6 @@ Sidepanel
     }
     .nav-tabs > li {
   		float: left;
-  		margin-bottom: -1px;
   		display: inline-block;
   		border-right: none;
   		width: 33.3333%;
@@ -600,7 +595,6 @@ Sidepanel
   		line-height:normal;
   		color: #fff;
   		display: block;
-  		padding: 10px 0;
   		border: none;
   		border-radius: 0px;
   		text-align: center;
@@ -1739,7 +1733,6 @@ Top Stats
 
 .topstats{
 	background: #fff;
-	padding: 0;
 	color: #76747A;
 	position: relative;
 	font-size: 12px;
@@ -2207,8 +2200,7 @@ fieldset[disabled] .btn {
 .btn-toggle {
   background-color: @color3;
   color: #666;
-  border-size:4px;
-  border-size:5px;
+  border-width: 5px;
 }
 .btn-toggle:hover,
 .btn-toggle:focus,
@@ -3638,7 +3630,6 @@ Widgets
 		font-weight: bold;
 		padding: 16px 20px;
 		background: #fff;
-		margin-bottom: 5px;
 		border-bottom: none;
 	 	border-top-left-radius: 3px;
 		border-top-right-radius: 3px;
