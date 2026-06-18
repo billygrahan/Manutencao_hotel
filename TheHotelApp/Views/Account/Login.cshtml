@@ -36,13 +36,15 @@
             <div class="form-area">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="group">
-                    <input asp-for="Email" class="form-control" placeholder="Email Address" aria-label="Email Address" />
+                    <label asp-for="Email" class="sr-only">Email Address</label>
+                    <input asp-for="Email" class="form-control" placeholder="Email Address" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                     <i class="fa fa-user"></i>
                 </div>
 
                 <div class="group">
-                    <input asp-for="Password" class="form-control" placeholder="Password" aria-label="Password" />
+                    <label asp-for="Password" class="sr-only">Password</label>
+                    <input asp-for="Password" class="form-control" placeholder="Password" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                     <i class="fa fa-key"></i>
                 </div>
