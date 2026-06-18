@@ -108,7 +108,7 @@
                         {
                             <div class="row" style="margin-bottom:3px;">
                             <p class="col-sm-3">@feature.Name</p>
-                            <img class="img-responsive col-sm-2" width="60" height="60" src="@feature.Icon" asp-append-version="true" />
+                            <img class="img-responsive col-sm-2" width="60" height="60" src="@feature.Icon" asp-append-version="true" alt="@feature.Name" />
                                 </div>
                         }
                     </div>
@@ -127,10 +127,10 @@
                     </ul>
                 </div>
                 <div class="panel-body">
-                    @foreach (var image in ViewBag.Images as IEnumerable<Image>)
+                    @foreach (var roomPhoto in ViewBag.Images as IEnumerable<Image>)
                     {
-                        
-                        <img class="col-sm-12" style="margin-bottom:5px;" src="@image.ImageUrl" asp-append-version="true" alt="@image.Name" />
+
+                        <img class="col-sm-12" style="margin-bottom:5px;" src="@roomPhoto.ImageUrl" asp-append-version="true" alt="@roomPhoto.Name" />
                     }
 
                 </div>

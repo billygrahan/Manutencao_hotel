@@ -93,7 +93,7 @@
                             @foreach (var roomFeature in ViewBag.Features as IEnumerable<SelectedRoomFeatureViewModel>)
                             {
                             <p>
-                                <input type="checkbox" name="SelectedFeatureIDs" value="@roomFeature.FeatureID" @Html.Raw(roomFeature.Selected ? "checked" : "") /><img src="@roomFeature.Feature.Icon" width="50" style="margin-left: 4px;" /> @roomFeature.Feature.Name
+                                <label><input type="checkbox" name="SelectedFeatureIDs" value="@roomFeature.FeatureID" @Html.Raw(roomFeature.Selected ? "checked" : "") /><img src="@roomFeature.Feature.Icon" width="50" style="margin-left: 4px;" alt="@roomFeature.Feature.Name"/> @roomFeature.Feature.Name</label>
                             </p>
                             }
                         </div>
@@ -122,11 +122,11 @@
                             <div id="images">
                                 @if (ViewBag.Images != null)
                                 {
-                                    foreach (var image in ViewBag.Images as IEnumerable<Image>)
+                                    foreach (var roomPhoto in ViewBag.Images as IEnumerable<Image>)
                                     {
                                         <div class="col-md-4">
-                                            <input name="imageIDs" value="@image.ID" type="hidden">
-                                            <img class="img-responsive" src="@image.ImageUrl" asp-append-version="true" alt="@image.Name" width="400">
+                                            <input name="imageIDs" value="@roomPhoto.ID" type="hidden">
+                                            <img class="img-responsive" src="@roomPhoto.ImageUrl" asp-append-version="true" alt="@roomPhoto.Name" width="400">
                                             <p class="text-center remove"><a>Remove</a></p>
                                         </div>
                                     }

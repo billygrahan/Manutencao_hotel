@@ -30,17 +30,17 @@
                 <div asp-validation-summary="All" class="text-danger"></div>
 
                 <div class="group">
-                    <input asp-for="Email" class="form-control" placeholder="Email Address" />
+                    <input asp-for="Email" class="form-control" placeholder="Email Address" aria-label="Email Address" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                     <i class="fa fa-envelope-o"></i>
                 </div>
                 <div class="group">
-                    <input asp-for="Password" class="form-control" placeholder="Password"/>
+                    <input asp-for="Password" class="form-control" placeholder="Password" aria-label="Password"/>
                     <span asp-validation-for="Password" class="text-danger"></span>
                     <i class="fa fa-key"></i>
                 </div>
                 <div class="group">
-                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" aria-label="Confirm Password" />
                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     <i class="fa fa-key"></i>
                 </div>

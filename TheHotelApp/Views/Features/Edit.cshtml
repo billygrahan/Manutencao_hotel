@@ -35,7 +35,7 @@
                                 <label asp-for="Icon" class="col-sm-2 control-label form-label">Icon</label>
                                 <div id="icon">
                                     <input asp-for="Icon" type="hidden" />
-                                    <img class="img-responsive" width="60" src="@Model.Icon" asp-append-version="true" />
+                                    <img class="img-responsive" width="60" src="@Model.Icon" asp-append-version="true" alt="Feature icon" />
                                 </div>
                                 <a href="" data-toggle="modal" data-target="#AddImagesModal" class="col-sm-offset-2">Select Icon</a>
                                 <span asp-validation-for="Icon" class="text-danger col-sm-9 col-md-offset-2"></span>
