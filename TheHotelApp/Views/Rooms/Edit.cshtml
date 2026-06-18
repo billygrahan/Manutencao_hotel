@@ -92,9 +92,7 @@
                             <label asp-for="Features" class="control-label"></label>
                             @foreach (var roomFeature in ViewBag.Features as IEnumerable<SelectedRoomFeatureViewModel>)
                             {
-                            <p>
-                                <label><input type="checkbox" name="SelectedFeatureIDs" value="@roomFeature.FeatureID" @Html.Raw(roomFeature.Selected ? "checked" : "") /><img src="@roomFeature.Feature.Icon" width="50" style="margin-left: 4px;" alt="@roomFeature.Feature.Name"/> @roomFeature.Feature.Name</label>
-                            </p>
+                                @await Html.PartialAsync("_RoomFeatureCheckbox", roomFeature)
                             }
                         </div>
                     </div>

@@ -1,0 +1,4 @@
+@model TheHotelApp.ViewModels.SelectedRoomFeatureViewModel
+<p>
+    <label><input type="checkbox" name="SelectedFeatureIDs" value="@Model.FeatureID" @Html.Raw(Model.Selected ? "checked" : "") /><img src="@Model.Feature.Icon" width="50" style="margin-left: 4px;" alt="@Model.Feature.Name" /> @Model.Feature.Name</label>
+</p>

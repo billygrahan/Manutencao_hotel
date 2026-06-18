@@ -71,11 +71,10 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 ">
-                                <h5>No of Guests Expected:</h5>
+                                <h5 id="guests-label">No of Guests Expected:</h5>
                                 <fieldset>
                                     <div class="control-group">
-                                        <label asp-for="Guests" class="sr-only">Number of Guests</label>
-                                        <input asp-for="Guests" class="col-md-10" min="0" max="@room.MaximumGuests" />
+                                        <input asp-for="Guests" class="col-md-10" min="0" max="@room.MaximumGuests" aria-labelledby="guests-label" />
                                         <span asp-validation-for="Guests" class="text-danger col-md-10"></span>
                                     </div>
                                 </fieldset>
