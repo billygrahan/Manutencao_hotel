@@ -12,7 +12,7 @@ namespace TheHotelApp.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public decimal BasePrice { get; set; }
+        public decimal? BasePrice { get; set; }
 
         [DataType(DataType.MultilineText)]
         [Required]

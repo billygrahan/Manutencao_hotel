@@ -93,6 +93,11 @@ namespace TheHotelApp.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> LoginWith2fa(bool rememberMe, string returnUrl = null)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             // Ensure the user has gone through the username & password screen first
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
 

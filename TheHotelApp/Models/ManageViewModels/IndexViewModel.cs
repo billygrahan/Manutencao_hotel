@@ -14,7 +14,7 @@ namespace TheHotelApp.Models.ManageViewModels
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
-        public bool IsEmailConfirmed { get; set; }
+        public bool? IsEmailConfirmed { get; set; }
 
         [Required]
         [EmailAddress]

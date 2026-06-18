@@ -290,6 +290,11 @@ namespace TheHotelApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {

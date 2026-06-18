@@ -231,7 +231,7 @@ namespace TheHotelApp.Services
                 }
             }
             _context.Images.AddRange(AddedImages);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
 
             var result = new AddImagesViewModel
