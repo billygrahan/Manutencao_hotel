@@ -3113,18 +3113,6 @@ fieldset[disabled] .note-editor .btn-link:focus {
 .note-editor .btn-toolbar:after {
   clear: both;
 }
-.note-editor .btn-toolbar:before,
-.note-editor .btn-toolbar:after {
-  content: " ";
-  /* 1 */
-
-  display: table;
-  /* 2 */
-
-}
-.note-editor .btn-toolbar:after {
-  clear: both;
-}
 .note-editor .btn-toolbar .btn-group {
   float: left;
 }
@@ -4802,18 +4790,6 @@ textarea.note-editor .input-group-sm > .input-group-btn > .btn {
 }
 .note-editor .panel-body {
   padding: 15px;
-}
-.note-editor .panel-body:before,
-.note-editor .panel-body:after {
-  content: " ";
-  /* 1 */
-
-  display: table;
-  /* 2 */
-
-}
-.note-editor .panel-body:after {
-  clear: both;
 }
 .note-editor .panel-body:before,
 .note-editor .panel-body:after {
