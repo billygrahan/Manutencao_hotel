@@ -123,22 +123,6 @@ namespace TheHotelApp.Controllers
             return View(feature);
         }
 
-        // GET: Features/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var feature = await _hotelService.GetItemByIdAsync(id);
-            if (feature == null)
-            {
-                return NotFound();
-            }
-
-            return View(feature);
-        }
 
         // POST: Features/Delete/5
         [HttpPost, ActionName("Delete")]
