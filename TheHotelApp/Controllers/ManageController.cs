@@ -506,7 +506,7 @@ namespace TheHotelApp.Controllers
             }
         }
 
-        private string FormatKey(string unformattedKey)
+        private static string FormatKey(string unformattedKey)
         {
             var result = new StringBuilder();
             int currentPosition = 0;
