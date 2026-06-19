@@ -58,7 +58,6 @@ namespace TheHotelApp.Services
         public async Task EditItemAsync(TEntity entity)
         {
             _context.Update(entity);
-            //_context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
@@ -102,9 +101,9 @@ namespace TheHotelApp.Services
             return _context.Bookings.Include(x => x.Room).Include(x => x.Room.RoomType);
         }
 
-        public IEnumerable<Room> GetAllRoomsWithFeature(string featureID)
+        public IEnumerable<Room> GetAllRoomsWithFeature(string feature)
         {
-           var RoomFeatures = _context.RoomFeatureRelationships.Include(x => x.Room).Include(x => x.Room.RoomType).Where(x => x.FeatureID == featureID);
+           var RoomFeatures = _context.RoomFeatureRelationships.Include(x => x.Room).Include(x => x.Room.RoomType).Where(x => x.FeatureID == feature);
             var SelectedRooms = new List<Room>();
             foreach(var roomFeature in RoomFeatures)
             {
@@ -276,15 +275,15 @@ namespace TheHotelApp.Services
             return ImagesAndFeatures;
         }
 
-        public void UpdateRoomImagesList(Room room, string[] imagesIDs)
+        public void UpdateRoomImagesList(Room room, string[] images)
         {
             var PreviouslySelectedImages = _context.ItemImageRelationships.Where(x => x.ItemID == room.ID);
             _context.ItemImageRelationships.RemoveRange(PreviouslySelectedImages);
             _context.SaveChanges();
 
-            if (imagesIDs != null)
+            if (images != null)
             {
-                foreach (var imageID in imagesIDs)
+                foreach (var imageID in images)
                 {                    
                     try
                     {
@@ -300,7 +299,7 @@ namespace TheHotelApp.Services
                     }     
                     catch(Exception)
                     {
-                        continue;
+
                     }
                 }
                 _context.SaveChanges();
