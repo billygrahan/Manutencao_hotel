@@ -298,7 +298,7 @@ namespace TheHotelApp.Services
                             });
                         }
                     }     
-                    catch(Exception e)
+                    catch(Exception)
                     {
                         continue;
                     }

@@ -29,7 +29,7 @@
 
                         <div class="form-group">
                             <label asp-for="Email"></label>
-                            @if (Model.IsEmailConfirmed)
+                            @if (Model.IsEmailConfirmed == true)
         {
                     <div class="input-group">
                         <input asp-for="Email" class="form-control" />

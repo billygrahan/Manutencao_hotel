@@ -97,7 +97,7 @@
                                     @item.Price
                                 </td>
                                 <td>
-                                    @Html.Raw(item.Available ? "Yes" : "No")
+                                    @Html.Raw(item.Available == true ? "Yes" : "No")
                                 </td>
                                 <td>
                                     @item.Description
