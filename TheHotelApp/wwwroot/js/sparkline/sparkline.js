@@ -510,7 +510,7 @@
                 val = false;
                 break;
             default:
-                nf = parseFloat(val);
+                nf = Number.parceFloat(val);
                 if (val == nf) {
                     val = nf;
                 }
@@ -537,12 +537,12 @@
     };
 
     isNumber = function (num) {
-        return !isNaN(parseFloat(num)) && isFinite(num);
+        return !Number.isNaN(Number.parceFloat(num)) && Number.isFinite(num);
     };
 
     formatNumber = function (num, prec, groupsize, groupsep, decsep) {
         var p, i;
-        num = (prec === false ? parseFloat(num).toString() : num.toFixed(prec)).split('');
+        num = (prec === false ? Number.parceFloat(num).toString() : num.toFixed(prec)).split('');
         p = (p = $.inArray('.', num)) < 0 ? num.length : p;
         if (p < num.length) {
             num[p] = decsep;
@@ -654,8 +654,8 @@
             for (key in map) {
                 if (map.hasOwnProperty(key) && typeof key === 'string' && key.indexOf(':') > -1) {
                     range = key.split(':');
-                    range[0] = range[0].length === 0 ? -Infinity : parseFloat(range[0]);
-                    range[1] = range[1].length === 0 ? Infinity : parseFloat(range[1]);
+                    range[0] = range[0].length === 0 ? -Infinity : Number.parceFloat(range[0]);
+                    range[1] = range[1].length === 0 ? Infinity : Number.parceFloat(range[1]);
                     range[2] = map[key];
                     rangelist.push(range);
                 }
@@ -1285,7 +1285,7 @@
                     rgbnew = [];
                     mult = color.length === 4 ? 16 : 1;
                     for (i = 0; i < 3; i++) {
-                        rgbnew[i] = clipval(Math.round(parseInt(parse[i + 1], 16) * mult * lighten), 0, 255);
+                        rgbnew[i] = clipval(Math.round(Number.parseInt(parse[i + 1], 16) * mult * lighten), 0, 255);
                     }
                     return 'rgb(' + rgbnew.join(',') + ')';
                 }
@@ -1706,8 +1706,8 @@
         type: 'bar',
 
         init: function (el, values, options, width, height) {
-            var barWidth = parseInt(options.get('barWidth'), 10),
-                barSpacing = parseInt(options.get('barSpacing'), 10),
+            var barWidth = Number.parseInt(options.get('barWidth'), 10),
+                barSpacing = Number.parseInt(options.get('barSpacing'), 10),
                 chartRangeMin = options.get('chartRangeMin'),
                 chartRangeMax = options.get('chartRangeMax'),
                 chartRangeClip = options.get('chartRangeClip'),
@@ -1962,8 +1962,8 @@
         type: 'tristate',
 
         init: function (el, values, options, width, height) {
-            var barWidth = parseInt(options.get('barWidth'), 10),
-                barSpacing = parseInt(options.get('barSpacing'), 10);
+            var barWidth = Number.parseInt(options.get('barWidth'), 10),
+                barSpacing = Number.parseInt(options.get('barSpacing'), 10);
             tristate._super.init.call(this, el, values, options, width, height);
 
             this.regionShapes = {};

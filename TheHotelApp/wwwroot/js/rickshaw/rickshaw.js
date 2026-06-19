@@ -692,8 +692,8 @@ Rickshaw.Graph = function(args) {
 
 		if (typeof window !== undefined) {
 			var style = window.getComputedStyle(this.element, null);
-			var elementWidth = parseInt(style.getPropertyValue('width'), 10);
-			var elementHeight = parseInt(style.getPropertyValue('height'), 10);
+			var elementWidth = Number.parseInt(style.getPropertyValue('width'), 10);
+			var elementHeight = Number.parseInt(style.getPropertyValue('height'), 10);
 		}
 
 		this.width = args.width || elementWidth || 400;
@@ -916,7 +916,7 @@ Rickshaw.Fixtures.Time = function() {
 		{
 			name: 'decade',
 			seconds: 86400 * 365.25 * 10,
-			formatter: function(d) { return (parseInt(d.getUTCFullYear() / 10, 10) * 10) }
+			formatter: function(d) { return (Number.parseInt(d.getUTCFullYear() / 10, 10) * 10) }
 		}, {
 			name: 'year',
 			seconds: 86400 * 365.25,
@@ -1031,7 +1031,7 @@ Rickshaw.Fixtures.Time.Local = function() {
 		{
 			name: 'decade',
 			seconds: 86400 * 365.25 * 10,
-			formatter: function(d) { return (parseInt(d.getFullYear() / 10, 10) * 10) }
+			formatter: function(d) { return (Number.parseInt(d.getFullYear() / 10, 10) * 10) }
 		}, {
 			name: 'year',
 			seconds: 86400 * 365.25,
@@ -1590,10 +1590,10 @@ Rickshaw.Graph.Axis.X = function(args) {
 		if (typeof window !== 'undefined') {
 
 			var style = window.getComputedStyle(element, null);
-			var elementHeight = parseInt(style.getPropertyValue('height'), 10);
+			var elementHeight = Number.parseInt(style.getPropertyValue('height'), 10);
 
 			if (!args.auto) {
-				var elementWidth = parseInt(style.getPropertyValue('width'), 10);
+				var elementWidth = Number.parseInt(style.getPropertyValue('width'), 10);
 			}
 		}
 
@@ -1653,10 +1653,10 @@ Rickshaw.Graph.Axis.Y = Rickshaw.Class.create( {
 		if (typeof window !== 'undefined') {
 
 			var style = window.getComputedStyle(this.element.parentNode, null);
-			var elementWidth = parseInt(style.getPropertyValue('width'), 10);
+			var elementWidth = Number.parseInt(style.getPropertyValue('width'), 10);
 
 			if (!args.auto) {
-				var elementHeight = parseInt(style.getPropertyValue('height'), 10);
+				var elementHeight = Number.parseInt(style.getPropertyValue('height'), 10);
 			}
 		}
 

@@ -45,7 +45,7 @@ var hoverDetail = new Rickshaw.Graph.HoverDetail( {
 	formatter: function(series, x, y) {
 		var date = '<span class="date">' + new Date(x * 1000).toUTCString() + '</span>';
 		var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + '"></span>';
-		var content = swatch + series.name + ": " + parseInt(y) + '<br>' + date;
+		var content = swatch + series.name + ": " + Number.parseInt(y) + '<br>' + date;
 		return content;
 	}
 } );
@@ -163,13 +163,6 @@ new Rickshaw.Graph.Axis.Y.Scaled({
   tickFormat: Rickshaw.Fixtures.Number.formatKMBT
 });
 
-new Rickshaw.Graph.Axis.Time({
-  graph: graph
-});
-
-new Rickshaw.Graph.HoverDetail({
-  graph: graph
-});
 
 graph.render();
 
@@ -218,10 +211,6 @@ var slider = new Rickshaw.Graph.RangeSlider.Preview({
 });
 
 
-new Rickshaw.Graph.HoverDetail({
-  graph: graph
-});
-
 
 /* ======================================================================
 GAPS
@@ -254,8 +243,6 @@ var graph = new Rickshaw.Graph( {
 } );
 
 graph.render();
-
-new Rickshaw.Graph.HoverDetail({ graph: graph });
 
 
 

@@ -1767,7 +1767,7 @@ GMaps.staticMapURL = function(options){
       color = color.replace('#', '0x');
 
       if (opacity) {
-        opacity = parseFloat(opacity);
+        opacity = Number.parseFloat(opacity);
         opacity = Math.min(1, Math.max(opacity, 0));
         if (opacity === 0) {
           return '0x00000000';
@@ -1788,7 +1788,7 @@ GMaps.staticMapURL = function(options){
     polyline = [];
 
     if (data.strokeWeight) {
-      polyline.push('weight:' + parseInt(data.strokeWeight, 10));
+      polyline.push('weight:' + Number.parseInt(data.strokeWeight, 10));
     }
 
     if (data.strokeColor) {

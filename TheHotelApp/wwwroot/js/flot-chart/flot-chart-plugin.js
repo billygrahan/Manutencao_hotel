@@ -45,7 +45,7 @@ Real-time
     var updateInterval = 30;
     $("#updateInterval").val(updateInterval).change(function () {
       var v = $(this).val();
-      if (v && !isNaN(+v)) {
+      if (v && !Number.isNaN(+v)) {
         updateInterval = +v;
         if (updateInterval < 1) {
           updateInterval = 1;
@@ -196,17 +196,17 @@ Stacked
 
     var d1 = [];
     for (var i = 0; i <= 10; i += 1) {
-      d1.push([i, parseInt(Math.random() * 30)]);
+      d1.push([i, Number.parseInt(Math.random() * 30)]);
     }
 
     var d2 = [];
     for (var i = 0; i <= 10; i += 1) {
-      d2.push([i, parseInt(Math.random() * 30)]);
+      d2.push([i, Number.parseInt(Math.random() * 30)]);
     }
 
     var d3 = [];
     for (var i = 0; i <= 10; i += 1) {
-      d3.push([i, parseInt(Math.random() * 30)]);
+      d3.push([i, Number.parseInt(Math.random() * 30)]);
     }
 
     var stack = 0,
