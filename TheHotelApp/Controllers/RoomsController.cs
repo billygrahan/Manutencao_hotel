@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Build.Framework;
 using Microsoft.EntityFrameworkCore;
-using TheHotelApp.Models;
 using TheHotelApp.Data;
+using TheHotelApp.Models;
 using TheHotelApp.Services;
 using TheHotelApp.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 
 namespace TheHotelApp.Controllers
 {
@@ -17,7 +18,11 @@ namespace TheHotelApp.Controllers
     public class RoomsController : Controller
     {
         private readonly IGenericHotelService<Room> _hotelService;
-        
+
+        private const string Features_ = "Features";
+        private const string Images_ = "Images";
+        private const string RoomTypeId_ = "RoomTypeID";
+
         public RoomsController(IGenericHotelService<Room> genericHotelService)
         {
             _hotelService = genericHotelService;
@@ -46,8 +51,8 @@ namespace TheHotelApp.Controllers
             }
 
             var ImagesAndFeatures = await _hotelService.GetRoomFeaturesAndImagesAsync(room);
-            ViewData["Features"] = ImagesAndFeatures.Features;
-            ViewData["Images"] = ImagesAndFeatures.Images;
+            ViewData[Features_] = ImagesAndFeatures.Features;
+            ViewData[Images_] = ImagesAndFeatures.Images;
             return View(room);
         }
 
@@ -55,10 +60,10 @@ namespace TheHotelApp.Controllers
         public IActionResult Create()
         {
             var RoomTypes = _hotelService.GetAllRoomTypesAsync().Result;
-            ViewData["RoomTypeID"] = new SelectList(RoomTypes, "ID", "Name");
+            ViewData[RoomTypeId_] = new SelectList(RoomTypes, "ID", "Name");
 
             var room = new Room();
-            ViewData["Features"] = _hotelService.PopulateSelectedFeaturesForRoom(room);
+            ViewData[Features_] = _hotelService.PopulateSelectedFeaturesForRoom(room);
 
 
             return View();
@@ -79,9 +84,9 @@ namespace TheHotelApp.Controllers
                 _hotelService.UpdateRoomImagesList(room, imageIDs);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Features"] = _hotelService.PopulateSelectedFeaturesForRoom(room);
+            ViewData[Features_] = _hotelService.PopulateSelectedFeaturesForRoom(room);
             var ImagesAndFeatures = await _hotelService.GetRoomFeaturesAndImagesAsync(room);
-            ViewData["Images"] = ImagesAndFeatures.Images;
+            ViewData[Images_] = ImagesAndFeatures.Images;
             return View(room);
         }
 
@@ -100,11 +105,11 @@ namespace TheHotelApp.Controllers
                 return NotFound();
             }
             var RoomTypes = _hotelService.GetAllRoomTypesAsync().Result;
-            ViewData["RoomTypeID"] = new SelectList(RoomTypes, "ID", "Name", room.RoomType.ID);
+            ViewData[RoomTypeId_] = new SelectList(RoomTypes, "ID", "Name", room.RoomType.ID);
 
-            ViewData["Features"] = _hotelService.PopulateSelectedFeaturesForRoom(room);
+            ViewData[Features_] = _hotelService.PopulateSelectedFeaturesForRoom(room);
             var ImagesAndFeatures = await _hotelService.GetRoomFeaturesAndImagesAsync(room);
-            ViewData["Images"] = ImagesAndFeatures.Images;
+            ViewData[Images_] = ImagesAndFeatures.Images;
             return View(room);
         }
 
@@ -144,10 +149,10 @@ namespace TheHotelApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
             var RoomTypes = _hotelService.GetAllRoomTypesAsync().Result;
-            ViewData["RoomTypeID"] = new SelectList(RoomTypes, "ID", "ID", room.RoomTypeID);
-            ViewData["Features"] = _hotelService.PopulateSelectedFeaturesForRoom(room);
+            ViewData[RoomTypeId_] = new SelectList(RoomTypes, "ID", "ID", room.RoomTypeID);
+            ViewData[Features_] = _hotelService.PopulateSelectedFeaturesForRoom(room);
             var ImagesAndFeatures = await _hotelService.GetRoomFeaturesAndImagesAsync(room);
-            ViewData["Images"] = ImagesAndFeatures.Images;
+            ViewData[Images_] = ImagesAndFeatures.Images;
             return View(room);
         }
 
