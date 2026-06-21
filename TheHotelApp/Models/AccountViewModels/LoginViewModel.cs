@@ -17,6 +17,7 @@ namespace TheHotelApp.Models.AccountViewModels
         public string Password { get; set; }
 
         [Display(Name = "Remember me?")]
-        public bool? RememberMe { get; set; }
+        [Required]
+        public bool RememberMe { get; set; }
     }
 }

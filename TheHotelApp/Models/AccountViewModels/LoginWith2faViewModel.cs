@@ -15,9 +15,11 @@ namespace TheHotelApp.Models.AccountViewModels
         public string TwoFactorCode { get; set; }
 
         [Display(Name = "Remember this machine")]
-        public bool? RememberMachine { get; set; }
+        [Required]
+        public bool RememberMachine { get; set; }
 
-        public bool? RememberMe { get; set; }
+        [Required]
+        public bool RememberMe { get; set; }
     }
 }
         
