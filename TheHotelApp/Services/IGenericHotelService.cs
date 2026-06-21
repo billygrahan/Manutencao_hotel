@@ -30,6 +30,8 @@ namespace TheHotelApp.Services
        
         RoomsAdminIndexViewModel GetAllRoomsAndRoomTypes();
 
+        RoomsAdminIndexViewModel GetFilteredRoomsAndRoomTypes(decimal? minPrice, decimal? maxPrice, bool? available, string roomTypeId);
+
         Task<IEnumerable<RoomType>> GetAllRoomTypesAsync();
 
         IEnumerable<Room> GetAllRooms();

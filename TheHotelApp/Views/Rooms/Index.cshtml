@@ -16,6 +16,81 @@
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START CONTAINER -->
 <div class="container-padding">
+    <!-- Filter Panel -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-title">
+                    <a data-toggle="collapse" href="#filterPanel" aria-expanded="false" aria-controls="filterPanel">
+                        Search Filters <span class="caret"></span>
+                    </a>
+                </div>
+                <div id="filterPanel" class="panel-body collapse @(Model.MinPrice.HasValue || Model.MaxPrice.HasValue || Model.Available.HasValue || !string.IsNullOrEmpty(Model.RoomTypeID) ? "in" : "")">
+                    <form method="get" asp-action="Index">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="minPrice">Min Price (R$)</label>
+                                <input type="number" id="minPrice" name="minPrice" class="form-control" min="0" step="0.01"
+                                       value="@Model.MinPrice" placeholder="0.00" />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="maxPrice">Max Price (R$)</label>
+                                <input type="number" id="maxPrice" name="maxPrice" class="form-control" min="0" step="0.01"
+                                       value="@Model.MaxPrice" placeholder="Any" />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="available">Availability</label>
+                                <select id="available" name="available" class="form-control">
+                                    <option value="">All</option>
+                                    @if (Model.Available == true)
+                                    {
+                                        <option value="true" selected>Available</option>
+                                        <option value="false">Unavailable</option>
+                                    }
+                                    else if (Model.Available == false)
+                                    {
+                                        <option value="true">Available</option>
+                                        <option value="false" selected>Unavailable</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="true">Available</option>
+                                        <option value="false">Unavailable</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="roomTypeId">Room Category</label>
+                                <select id="roomTypeId" name="roomTypeId" class="form-control">
+                                    <option value="">All Categories</option>
+                                    @foreach (var rt in Model.RoomTypes)
+                                    {
+                                        if (Model.RoomTypeID == rt.ID)
+                                        {
+                                            <option value="@rt.ID" selected>@rt.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@rt.ID">@rt.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 12px;">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-option3">Search</button>
+                                <a asp-action="Index" class="btn btn-default">Clear Filters</a>
+                                <span class="text-muted" style="margin-left: 12px;">
+                                    @Model.Rooms.Count room(s) found
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Start Row -->
     <div class="row">
         <!-- Start Panel -->

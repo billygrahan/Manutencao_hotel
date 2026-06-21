@@ -86,6 +86,30 @@ namespace TheHotelApp.Services
             return RoomsAdminIndeViewModel;
         }
 
+        public RoomsAdminIndexViewModel GetFilteredRoomsAndRoomTypes(decimal? minPrice, decimal? maxPrice, bool? available, string roomTypeId)
+        {
+            var query = _context.Rooms.Include(r => r.RoomType).AsQueryable();
+
+            if (minPrice.HasValue)
+                query = query.Where(r => r.Price >= minPrice.Value);
+            if (maxPrice.HasValue)
+                query = query.Where(r => r.Price <= maxPrice.Value);
+            if (available.HasValue)
+                query = query.Where(r => r.Available == available.Value);
+            if (!string.IsNullOrEmpty(roomTypeId))
+                query = query.Where(r => r.RoomTypeID == roomTypeId);
+
+            return new RoomsAdminIndexViewModel
+            {
+                Rooms = query.ToList(),
+                RoomTypes = _context.RoomTypes.ToList(),
+                MinPrice = minPrice,
+                MaxPrice = maxPrice,
+                Available = available,
+                RoomTypeID = roomTypeId
+            };
+        }
+
         public async Task<IEnumerable<RoomType>> GetAllRoomTypesAsync()
         {
             return await _context.RoomTypes.ToArrayAsync();

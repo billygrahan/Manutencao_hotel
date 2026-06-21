@@ -29,9 +29,13 @@ namespace TheHotelApp.Controllers
         }
 
         // GET: Rooms
-        public IActionResult Index()
+        public IActionResult Index(decimal? minPrice, decimal? maxPrice, bool? available, string roomTypeId)
         {
-            return View(_hotelService.GetAllRoomsAndRoomTypes());
+            var hasFilters = minPrice.HasValue || maxPrice.HasValue || available.HasValue || !string.IsNullOrEmpty(roomTypeId);
+            var viewModel = hasFilters
+                ? _hotelService.GetFilteredRoomsAndRoomTypes(minPrice, maxPrice, available, roomTypeId)
+                : _hotelService.GetAllRoomsAndRoomTypes();
+            return View(viewModel);
         }
 
         // GET: Rooms/Details/5
