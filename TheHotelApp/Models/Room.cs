@@ -7,6 +7,12 @@ using TheHotelApp.Models;
 
 namespace TheHotelApp.Models
 {
+    public enum NivelConservacao
+    {
+        Baixo,
+        Medio,
+        Alto
+    }
     public class Room
     {
         public string ID { get; set; }
@@ -17,8 +23,16 @@ namespace TheHotelApp.Models
         public virtual RoomType RoomType { get; set; }
         [Required]
         public decimal? Price { get; set; }
-        public bool? Available { get; set; }
 
+        [Required]
+        public bool Available { get; set; }
+
+        [Required]
+        public bool StatusLimpeza { get; set; } // True = Limpo, False = Sujo (por exemplo)
+
+        [Required]
+        public NivelConservacao Conservacao { get; set; } // Salva como INT no banco (0, 1, 2)
+        
         [Required]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
