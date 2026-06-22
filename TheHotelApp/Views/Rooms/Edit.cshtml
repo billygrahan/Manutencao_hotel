@@ -5,23 +5,16 @@
     ViewData["Title"] = "Edit";
 }
 
-
-
-
-<!-- Start Page Header -->
 <div class="page-header">
     <h1 class="title">Rooms</h1>
     <ol class="breadcrumb">
         <li><a asp-action="Index">Rooms</a></li>
         <li class="active">Edit</li>
     </ol>
-    <!-- Start Page Header Right Div -->
     <div class="right">
         <button id="top-submit-button" class="btn btn-option3 btn-lg">Save Changes</button>
     </div>
 </div>
-<!-- End Page Header -->
-<!-- START CONTAINER -->
 <div class="container-padding">
     <div class="row">
         <form asp-action="Edit" class="form-horizontal">
@@ -55,11 +48,29 @@
                             <input asp-for="Price" class="col-sm-9" />
                             <span asp-validation-for="Price" class="text-danger col-sm-9"></span>
                         </div>
+                        
                         <div class="form-group">
-                            <label asp-for="Available" class="col-sm-2 control-label form-label"></label>
-                            <input asp-for="Available" class="col-sm-1 checkbox" />
+                            <label asp-for="Available" class="col-sm-2 control-label form-label">Disponível?</label>
+                            <div class="col-sm-9" style="padding-top: 8px;">
+                                <input type="checkbox" asp-for="Available" style="width: 20px; height: 20px; cursor: pointer;" />
+                            </div>
                             <span asp-validation-for="Available" class="text-danger col-sm-9"></span>
                         </div>
+
+                        <div class="form-group">
+                            <label asp-for="StatusLimpeza" class="col-sm-2 control-label form-label">Limpo?</label>
+                            <div class="col-sm-9" style="padding-top: 8px;">
+                                <input type="checkbox" asp-for="StatusLimpeza" style="width: 20px; height: 20px; cursor: pointer;" />
+                            </div>
+                            <span asp-validation-for="StatusLimpeza" class="text-danger col-sm-9"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label asp-for="Conservacao" class="col-sm-2 control-label form-label">Estado de Conservação</label>
+                            <select asp-for="Conservacao" class="col-sm-9" asp-items="Html.GetEnumSelectList<TheHotelApp.Models.NivelConservacao>()"></select>
+                            <span asp-validation-for="Conservacao" class="text-danger col-sm-9"></span>
+                        </div>
+
                         <div class="form-group">
                             <label asp-for="Description" class="col-sm-2 control-label form-label"></label>
                             <textarea asp-for="Description" class="col-sm-9" style="border-radius: 3px; padding-left: 10px; font-size: 14px; background: #fff; border: 1px solid #BDC4C9; box-shadow: inset 0px 1px 0px #F1F0F1;"></textarea>
@@ -70,7 +81,6 @@
                             <input asp-for="MaximumGuests" class="col-sm-9" />
                             <span asp-validation-for="MaximumGuests" class="text-danger col-sm-9"></span>
                         </div>
-
 
                     </div>
                 </div>
@@ -153,14 +163,9 @@
         </form>
     </div>
 </div>
-<!-- END CONTAINER -->
-<!-- //////////////////////////////////////////////////////////////////////////// -->
-
-
 <div class="modal fade" id="AddImagesModal" role="dialog">
     <div class="modal-dialog modal-lg">
 
-        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -181,11 +186,9 @@
 
 
 
-<!-- DeleteModal -->
 <div class="modal fade" id="DeleteModal" role="dialog">
     <div class="modal-dialog">
 
-        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -204,7 +207,8 @@
         </div>
 
     </div>
-</div> <!-- DeleteModal -->
+
+</div> 
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
@@ -269,5 +273,3 @@
         }); //jquery
     </script>
 }
-
-

@@ -1,25 +1,16 @@
-﻿
-
-@model TheHotelApp.Models.Room
+﻿@model TheHotelApp.Models.Room
 @using TheHotelApp.ViewModels
 
-
-
-
-<!-- Start Page Header -->
 <div class="page-header">
     <h1 class="title">Rooms</h1>
     <ol class="breadcrumb">
         <li><a asp-action="Index">Rooms</a></li>
         <li class="active">Details</li>
     </ol>
-    <!-- Start Page Header Right Div -->
     <div class="right">
         <a asp-action="edit" asp-route-id="@Model.ID" class="btn btn-option3 btn-lg">Edit Room</a>
     </div>
 </div>
-<!-- End Page Header -->
-<!-- START CONTAINER -->
 <div class="container-padding">
     <div class="row">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -69,7 +60,25 @@
                                     <b>Status: </b>
                                 </p>
                                 <p class="col-sm-8">
-                                    @Model.Available
+                                    @(Model.Available ? "Disponível" : "Indisponível")
+                                </p>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <p class="col-sm-4">
+                                    <b>Limpo? </b>
+                                </p>
+                                <p class="col-sm-8">
+                                    @(Model.StatusLimpeza ? "Sim" : "Não")
+                                </p>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <p class="col-sm-4">
+                                    <b>Conservação: </b>
+                                </p>
+                                <p class="col-sm-8">
+                                    @Model.Conservacao
                                 </p>
                             </div>
 
@@ -107,9 +116,9 @@
                         @foreach (var feature in ViewBag.Features as IEnumerable<Feature>)
                         {
                             <div class="row" style="margin-bottom:3px;">
-                            <p class="col-sm-3">@feature.Name</p>
-                            <img class="img-responsive col-sm-2" width="60" height="60" src="@feature.Icon" asp-append-version="true" alt="@feature.Name" />
-                                </div>
+                                <p class="col-sm-3">@feature.Name</p>
+                                <img class="img-responsive col-sm-2" width="60" height="60" src="@feature.Icon" asp-append-version="true" alt="@feature.Name" />
+                            </div>
                         }
                     </div>
                 </div>
@@ -129,10 +138,8 @@
                 <div class="panel-body">
                     @foreach (var galleryItem in ViewBag.Images as IEnumerable<Image>)
                     {
-
                         <img class="col-sm-12" style="margin-bottom:5px;" src="@galleryItem.ImageUrl" asp-append-version="true" alt="@galleryItem.Name" />
                     }
-
                 </div>
             </div>
         </div>
@@ -155,13 +162,9 @@
         </div>
     </div>
 </div>
-<!-- END CONTAINER -->
-<!-- //////////////////////////////////////////////////////////////////////////// -->
-<!-- DeleteModal -->
 <div class="modal fade" id="DeleteModal" role="dialog">
     <div class="modal-dialog">
 
-        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -180,14 +183,11 @@
         </div>
 
     </div>
-</div> <!-- DeleteModal -->
-
+</div>
 @section Scripts {
-
     <script>
         $(document).ready(function () {
             $('#DeleteModal').on('show.bs.modal', function (e) {
-
                 //get data-id attribute of the clicked element
                 var roomID = $(e.relatedTarget).data('room-id');
                 var roomNumber = $(e.relatedTarget).data('room-number');
